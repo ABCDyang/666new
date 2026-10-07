@@ -20,6 +20,7 @@ jobs:
           name = "666new"
           main = "worker.js"
           compatibility_date = "2026-01-20"
+          account_id = "ca83c92549a26d240a77601a3cfcf2fc"
           keep_vars = true
 
           kv_namespaces = [ { binding = "KV", id = "1455b9bdf5104ea59453443d71a3dbbf" } ]
