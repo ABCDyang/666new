@@ -10,12 +10,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      # 生成 wrangler.toml：入口用混淆后的部署文件
+      # 把中文文件名复制成 ASCII 名，绕开 wrangler 对非 ASCII 文件名的 bug
+      - name: Copy entry to ASCII filename
+        run: cp "少年你相信光吗" worker.js
+
       - name: Create wrangler.toml
         run: |
           cat > wrangler.toml << 'EOF'
           name = "666new"
-          main = "少年你相信光吗"
+          main = "worker.js"
           compatibility_date = "2026-01-20"
           keep_vars = true
 
