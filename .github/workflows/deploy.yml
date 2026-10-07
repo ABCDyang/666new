@@ -2,6 +2,16 @@ name: Deploy to Cloudflare Workers
 
 on:
   workflow_dispatch:
+  # 网页/本地直接改动混淆文件时触发
+  push:
+    branches: [main]
+    paths:
+      - '少年你相信光吗'
+  # 混淆工作流跑完后自动触发（bot 推送只有这条路能触发）
+  workflow_run:
+    workflows: ["Generate and Obfuscate Worker Script"]
+    types: [completed]
+    branches: [main]
 
 jobs:
   deploy:
